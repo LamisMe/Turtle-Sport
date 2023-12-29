@@ -15,6 +15,45 @@
           padding: 20px 0;
           font-family: 'Roboto', sans-serif;
         }
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+    }
+    
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+    
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+    
+    .table tbody+tbody {
+      border-top: 2px solid #dee2e6;
+    }
+    
+    .table .table {
+      background-color: #fff;
+    }
+    
+    .table-sm th,
+    .table-sm td {
+      padding: 0.3rem;
+    }
+    
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    .table-hover tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.075);
+    }
+
       </style>
 </head>
 <body>
@@ -69,6 +108,48 @@
      </div>
    </nav>
    <!--  -->
+   <!-- content -->
+   <div class="container mt-5">
+    <h2>Danh sách sân đã đặt</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Tên sân bóng</th>
+          <th scope="col">Ngày đặt</th>
+          <th scope="col">Thời gian</th>
+          <th scope="col">Số điện thoại</th>
+          <th scope="col">Chức năng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Sân A</td>
+          <td>2023-12-29</td>
+          <td>18:00 - 20:00</td>
+          <td>0123456789</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Sân B</td>
+          <td>2023-12-30</td>
+          <td>08:00 - 10:00</td>
+          <td>0987654321</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <!-- Thêm các dòng dữ liệu cho các sân bóng đã đặt khác -->
+      </tbody>
+    </table>
+  </div>
+
+
+
  <!-- footer -->
  <footer class="footer bg-light mt-5">
     <div class="container">
