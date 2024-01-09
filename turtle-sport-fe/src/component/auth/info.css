@@ -1,0 +1,25 @@
+.profile-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .profile-card h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .profile-card .form-group {
+    margin-bottom: 20px;
+  }
+  .profile-card label {
+    font-weight: bold;
+  }
+  .profile-card .form-control {
+    border-radius: 4px;
+  }
+  .profile-card .btn-primary {
+    width: 100%;
+  }

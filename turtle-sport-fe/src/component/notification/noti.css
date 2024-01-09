@@ -1,0 +1,26 @@
+.custom-alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .custom-alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 2px solid #c3e6cb;
+  }
+  .custom-alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 2px solid #bee5eb;
+  }
+  .custom-alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 2px solid #ffeeba;
+  }
+  .custom-alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 2px solid #f5c6cb;
+  }

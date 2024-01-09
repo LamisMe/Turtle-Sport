@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="mycss.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="main-container d-flex">
+        <div class="sidebar" id="side_nav">
+            <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+                <h1 class="fs-4"> <span
+                        class="text-white"><img
+                        src="turtle-sport-high-resolution-logo-transparent.png"
+                        alt=""
+                        style="object-fit: cover; width: 80%"
+                        class="d-inline-block align-text-top"
+                      /></span></h1>
+                <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i
+                        class="fal fa-stream"></i></button>
+            </div>
+
+            <ul class="list-unstyled px-2">
+                <li class="active"><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class='bx bxs-home'></i> Cộng Đồng</a></li>
+                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                        <span><i class='bx bxs-widget'></i> Sân Bóng</span>
+                    </a>
+                </li>
+                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class='bx bx-notification'></i> Thông Báo</a></li>
+                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class='bx bxl-messenger' ></i>
+                        Tin Nhắn</a></li>
+            </ul>
+            <hr class="h-color mx-2">
+
+            <ul class="list-unstyled px-2">
+                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class='bx bxs-user'></i>
+                        Hồ Sơ</a></li>
+                <li class=""><a href="login.html" class="text-decoration-none px-3 py-2 d-block"><i class='bx bx-log-in'></i>
+                        Đăng Nhập</a></li>
+
+            </ul>
+
+        </div>
+        <div class="content">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between d-md-none d-block">
+                     <button class="btn px-1 py-0 open-btn me-2"><i class='bx bx-menu'></i></button>                       
+                    </div>
+                    <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fal fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="cart.html">Sân Yêu Thích</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+            <div class="dashboard-content px-3 pt-4">
+                <h2 class="fs-5"> Dashboard</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, totam? Sequi alias eveniet ut quas
+                    ullam delectus et quasi incidunt rem deserunt asperiores reiciendis assumenda doloremque provident,
+                    dolores aspernatur neque.</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+
+    <script>
+            $(".sidebar ul li").on('click', function () {
+            $(".sidebar ul li.active").removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('.open-btn').on('click', function () {
+            $('.sidebar').addClass('active');
+
+        });
+
+
+        $('.close-btn').on('click', function () {
+            $('.sidebar').removeClass('active');
+
+        })
+    </script>
+</body>
+</html>
