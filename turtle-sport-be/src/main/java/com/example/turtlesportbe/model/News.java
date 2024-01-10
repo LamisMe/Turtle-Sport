@@ -1,4 +1,4 @@
 package com.example.turtlesportbe.model;
 
-public class Booking {
+public class News {
 }

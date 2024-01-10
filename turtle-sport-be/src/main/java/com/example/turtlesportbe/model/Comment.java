@@ -16,6 +16,7 @@ public class Comment {
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean idDeleted;
     @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "id")

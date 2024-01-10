@@ -3,8 +3,6 @@ package com.example.turtlesportbe.model;
 import com.example.turtlesportbe.model.auth.Account;
 import jakarta.persistence.*;
 
-import java.util.Set;
-
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -18,10 +16,8 @@ public class Employee {
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
     @OneToOne
-    @JoinColumn(name = "accountId", referencedColumnName = "accountId")
+    @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
-    @OneToMany(mappedBy = "employee")
-    private Set<Booking> bookingSet;
 
     public Employee() {
     }
@@ -82,11 +78,4 @@ public class Employee {
         this.account = account;
     }
 
-    public Set<Booking> getBookingSet() {
-        return bookingSet;
-    }
-
-    public void setBookingSet(Set<Booking> bookingSet) {
-        this.bookingSet = bookingSet;
-    }
 }

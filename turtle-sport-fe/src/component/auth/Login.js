@@ -4,7 +4,7 @@ export function Login() {
     <>
       <div class="wrapper">
         <div class="container main">
-          <div class="row">
+          <div class="row" id="row">
             <div class="col-md-6 side-image">
               <img src="images/white.png" alt="" />
               <div class="text">
@@ -21,11 +21,11 @@ export function Login() {
                     required=""
                     autocomplete="off"
                   />
-                  <label for="email">Tài Khoản</label>
+                  <label for="email" className="text-primary">Tài Khoản</label>
                 </div>
                 <div class="input-field">
                   <input type="password" class="input" id="pass" required="" />
-                  <label for="pass">Mật Khẩu</label>
+                  <label for="pass" className="text-primary">Mật Khẩu</label>
                 </div>
                 <div class="input-field">
                   <input type="submit" class="submit" value="Đăng Nhập" />

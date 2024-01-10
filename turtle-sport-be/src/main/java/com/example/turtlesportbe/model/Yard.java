@@ -2,8 +2,6 @@ package com.example.turtlesportbe.model;
 
 import jakarta.persistence.*;
 
-import java.util.Set;
-
 @Entity
 @Table(name = "yards")
 public class Yard {
@@ -18,10 +16,7 @@ public class Yard {
     private String image;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
-    @OneToMany(mappedBy = "yard")
-    private Set<Booking> bookingSet;
-    @OneToMany(mappedBy = "yard")
-    private Set<Cart> cartSet;
+
 
     public Yard() {
     }
@@ -82,19 +77,4 @@ public class Yard {
         isDeleted = deleted;
     }
 
-    public Set<Booking> getBookingSet() {
-        return bookingSet;
-    }
-
-    public void setBookingSet(Set<Booking> bookingSet) {
-        this.bookingSet = bookingSet;
-    }
-
-    public Set<Cart> getCartSet() {
-        return cartSet;
-    }
-
-    public void setCartSet(Set<Cart> cartSet) {
-        this.cartSet = cartSet;
-    }
 }

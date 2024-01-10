@@ -24,7 +24,7 @@ public class Post {
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     boolean isDeleted;
     @ManyToOne
-    @JoinColumn (name = "account_id",referencedColumnName = "id")
+    @JoinColumn (name = "account_id",referencedColumnName = "accountId")
     private Account account;
     @JsonBackReference
     @OneToMany (mappedBy = "post")
