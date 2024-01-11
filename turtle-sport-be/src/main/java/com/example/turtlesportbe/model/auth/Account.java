@@ -2,8 +2,8 @@ package com.example.turtlesportbe.model.auth;
 
 import com.example.turtlesportbe.model.Group;
 import com.example.turtlesportbe.model.LikeDetail;
+import com.example.turtlesportbe.model.News;
 import com.example.turtlesportbe.model.Post;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -15,25 +15,25 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
     @Column(name = "username", nullable = false)
-    private String userName;
+    private String username;
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
-    @OneToMany(mappedBy="account")
-    @JsonBackReference
+    @OneToMany(mappedBy = "account")
     private Set<Post> posts;
     @ManyToOne
-    @JoinColumn(name = "group_id",referencedColumnName = "id")
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
-    @OneToMany(mappedBy="account")
-    @JsonBackReference
+    @OneToMany(mappedBy = "account")
     private Set<LikeDetail> likeDetails;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_roles",
             joinColumns = @JoinColumn(name = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roleSet;
+    @OneToMany(mappedBy = "account")
+    private Set<News> newsSet;
 
 
     public Account() {
@@ -47,12 +47,12 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -101,5 +101,13 @@ public class Account {
 
     public void setLikeDetails(Set<LikeDetail> likeDetails) {
         this.likeDetails = likeDetails;
+    }
+
+    public Set<News> getNewsSet() {
+        return newsSet;
+    }
+
+    public void setNewsSet(Set<News> newsSet) {
+        this.newsSet = newsSet;
     }
 }

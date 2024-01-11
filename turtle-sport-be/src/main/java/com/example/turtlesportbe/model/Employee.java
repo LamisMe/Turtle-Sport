@@ -18,6 +18,9 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "account_id", referencedColumnName = "accountId")
     private Account account;
+    @ManyToOne
+    @JoinColumn(name = "customer_id",referencedColumnName = "id")
+    private Customer customer;
 
     public Employee() {
     }
@@ -78,4 +81,11 @@ public class Employee {
         this.account = account;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

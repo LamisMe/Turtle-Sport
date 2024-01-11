@@ -16,10 +16,14 @@ public class Yard {
     private String image;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
+    @ManyToOne
+    @JoinColumn(name = "customer_id",referencedColumnName = "id")
+    private Customer customer;
 
 
     public Yard() {
     }
+
 
     public Integer getId() {
         return id;
@@ -77,4 +81,11 @@ public class Yard {
         isDeleted = deleted;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

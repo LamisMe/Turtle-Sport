@@ -10,9 +10,15 @@ import { GroupOverview } from "./component/group/GroupOverview";
 import { CreateYard } from "./component/yard/CreateYard";
 import { ManagerOverview } from "./component/manager/ManagerOverview";
 import { CreateBooking } from "./component/manager/CreateBooking";
+import Calendar from "./component/calendar/Calendar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Provider } from "react-redux";
+import store from "./redux/Store";
 function App() {
   return (
     <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,8 +31,12 @@ function App() {
           <Route path="/tao-san" element={<CreateYard />} />
           <Route path="/quan-ly" element={<ManagerOverview />} />
           <Route path="/dat-san" element={<CreateBooking />} />
+          <Route path="/lich" element={<Calendar />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer/>
+      </Provider>
+
     </>
   );
 }
