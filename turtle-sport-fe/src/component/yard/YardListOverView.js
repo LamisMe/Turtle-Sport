@@ -6,45 +6,7 @@ export function YardListOverView() {
   return (
     <>
       <div className="container-fluid">
-        <ul class="nav justify-content-center text-secondary fw-bold m-3">
-          <li class="nav-item">
-            <Link
-              class="nav-link active fw-bold text-dark"
-              aria-current="page"
-              to="/"
-            >
-              Trang Chủ
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link fw-bold text-dark" to="/tao-san">
-              Dành Cho Chủ Sân
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link text-dark" to="/tin-tuc">
-              Tin Tức
-            </Link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">
-              Cộng Đồng
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" href="#">
-              Sân Bóng
-            </a>
-          </li>
-
-          <Link
-            class="btn btn-primary text-light float-end fw-bold"
-            to="/user/login"
-            style={{ marginLeft: "30%" }}
-          >
-            Đăng Nhập
-          </Link>
-        </ul>
+        <Header/>
       </div>
       <div className="container">
         <label for="exampleDataList" class="form-label text-secondary fw-bold ms-2">

@@ -14,6 +14,8 @@ public class Yard {
     private String description;
     private Double price;
     private String image;
+    private Integer startTime;
+    private Integer endTime;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
     @ManyToOne
@@ -87,5 +89,21 @@ public class Yard {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
+    }
+
+    public Integer getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
     }
 }

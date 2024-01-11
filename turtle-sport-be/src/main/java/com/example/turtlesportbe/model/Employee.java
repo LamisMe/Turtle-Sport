@@ -1,6 +1,7 @@
 package com.example.turtlesportbe.model;
 
 import com.example.turtlesportbe.model.auth.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,11 +13,11 @@ public class Employee {
     private String name;
     private String phoneNumber;
     private String email;
-    private String identityNumber;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
+    @JsonBackReference
     @OneToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "accountId")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
     @ManyToOne
     @JoinColumn(name = "customer_id",referencedColumnName = "id")
@@ -55,14 +56,6 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getIdentityNumber() {
-        return identityNumber;
-    }
-
-    public void setIdentityNumber(String identityNumber) {
-        this.identityNumber = identityNumber;
     }
 
     public boolean isDeleted() {

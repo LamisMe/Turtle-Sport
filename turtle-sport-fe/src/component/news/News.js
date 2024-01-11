@@ -1,48 +1,7 @@
-import { Link } from "react-router-dom";
 export function News() {
   return (
     <>
-      <div className="container-fluid">
-        <ul class="nav justify-content-center text-secondary fw-bold m-3">
-          <li class="nav-item">
-            <Link
-              class="nav-link active fw-bold text-dark"
-              aria-current="page"
-              to="/"
-            >
-              Trang Chủ
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link fw-bold text-dark" to="/tao-san">
-              Dành Cho Chủ Sân
-            </Link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" href="#">
-              Tin Tức
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">
-              Cộng Đồng
-            </a>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link text-dark" to="/san-bong">
-              Sân Bóng
-            </Link>
-          </li>
-
-          <Link
-            class="btn btn-primary text-light float-end fw-bold"
-            to="/user/login"
-            style={{ marginLeft: "30%" }}
-          >
-            Đăng Nhập
-          </Link>
-        </ul>
-      </div>
+      
       <div className="container">
         <h3 className="text-danger">Tin Mới Nhất <i class='bx bxs-hot bx-sm'></i></h3>
         <div class="card mb-3" style={{ maxWwidth: "540px" }}>

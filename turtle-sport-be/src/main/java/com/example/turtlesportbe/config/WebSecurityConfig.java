@@ -50,8 +50,15 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
-                                .requestMatchers("/**").permitAll()
+                                .requestMatchers("/api/**").permitAll()
+//                                .requestMatchers("/api/news/list").permitAll()
+//                                .requestMatchers("/api/yards/list").permitAll()
 //                        Trang cần có quyền hợp lệ
+//                                .requestMatchers("/api/yards/create").hasAnyRole("MANAGER","ADMIN","USER")
+//                                .requestMatchers("/api/bookings/**").hasAnyRole("MANAGER","ADMIN","EMPLOYEE")
+//                                .requestMatchers("/api/customers/**").hasAnyRole("MANAGER","ADMIN")
+//                                .requestMatchers("/api/employees/**").hasAnyRole("MANAGER","ADMIN")
+//                                .requestMatchers("/api/news/**").hasAnyRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

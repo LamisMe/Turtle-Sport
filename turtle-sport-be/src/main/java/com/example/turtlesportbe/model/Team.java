@@ -1,20 +1,25 @@
 package com.example.turtlesportbe.model;
 
 import com.example.turtlesportbe.model.auth.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "groupes")
-public class Group {
+@Table(name = "teams")
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nameGroup;
-    @OneToMany(mappedBy = "group")
+    @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
+    private boolean isDeleted;
+    @JsonBackReference
+    @OneToMany(mappedBy = "team")
     private Set<Account> account;
-    @OneToMany (mappedBy = "group")
+    @JsonBackReference
+    @OneToMany (mappedBy = "team")
     private  Set<Message> messageSet;
 
     public Integer getId() {
@@ -49,6 +54,14 @@ public class Group {
         this.messageSet = messageSet;
     }
 
-    public Group() {
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public Team() {
     }
 }

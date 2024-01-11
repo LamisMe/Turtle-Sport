@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function authHeader() {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -20,5 +21,15 @@ export const login = async (account) => {
         return res.data;
     } catch (e) {
         throw e.response;
+    }
+}
+
+export const infoToken = () => {
+    const jwtToken = localStorage.getItem("user")
+    if(jwtToken != null) {
+        const decodedToken = jwtDecode(jwtToken);
+        return decodedToken;
+    }else{
+        return null;
     }
 }

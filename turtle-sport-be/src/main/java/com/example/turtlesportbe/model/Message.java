@@ -14,11 +14,11 @@ public class Message {
     @Column(name = "is_deleted",columnDefinition = "bit(1) default 0",nullable = false)
     private Boolean isDeleted;
     @ManyToOne
-    @JoinColumn(name = "senderAccountId", referencedColumnName = "accountId")
+    @JoinColumn(name = "senderAccountId", referencedColumnName = "id")
     private Account senderAccount;
     @ManyToOne
-    @JoinColumn(name = "group_id", referencedColumnName = "id")
-    private Group group;
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
+    private Team team;
 
     public Message() {
     }
@@ -55,11 +55,11 @@ public class Message {
         this.senderAccount = senderAccount;
     }
 
-    public Group getGroup() {
-        return group;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }

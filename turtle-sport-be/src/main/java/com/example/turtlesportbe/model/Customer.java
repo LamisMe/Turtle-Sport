@@ -1,12 +1,13 @@
 package com.example.turtlesportbe.model;
 
 import com.example.turtlesportbe.model.auth.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +20,17 @@ public class Customer {
     private String address;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
+    @JsonBackReference
     @OneToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "accountId")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
+    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Booking> bookings;
+    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Employee> employee;
+    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Yard> yards;
 

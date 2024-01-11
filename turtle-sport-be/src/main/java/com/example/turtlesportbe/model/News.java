@@ -16,10 +16,10 @@ public class News {
     private String image;
     @Column(name = "date_create", columnDefinition = "datetime", nullable = false)
     private String dateCreate;
-    @Column(name = "deleted", columnDefinition = "bit(1) default 0", nullable = false)
-    private boolean deleted;
+    @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
+    private boolean isDeleted;
     @ManyToOne
-    @JoinColumn(name = "account_id",referencedColumnName = "accountId")
+    @JoinColumn(name = "account_id",referencedColumnName = "id")
     private Account account;
 
     public News() {
@@ -66,11 +66,11 @@ public class News {
     }
 
     public boolean isDeleted() {
-        return deleted;
+        return isDeleted;
     }
 
     public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
+        isDeleted = deleted;
     }
 
     public Account getAccount() {

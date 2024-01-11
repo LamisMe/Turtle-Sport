@@ -42,7 +42,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception ex) {
             System.out.println("failed on set user authentication");
         }
-
         filterChain.doFilter(request, response);
     }
 

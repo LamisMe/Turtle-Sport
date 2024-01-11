@@ -1,5 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { infoToken } from "../../service/AuthService";
 export function Home() {
+  const [user,setUser] = useState(localStorage.getItem("user"));
+  const [username,setUsername] = useState("");
+  const inforUser = async() =>{
+    const res = infoToken();
+    // console.log("gà",res);
+    if(res != null){
+      setUsername(res.sub)
+    }
+  }
+
+  useEffect(()=>{
+    inforUser()
+  },[]);
   return (
     <>
       <div class="container-fluid">
@@ -33,10 +48,14 @@ export function Home() {
               Sân Bóng
             </Link>
           </li>
-          
+          {!user ? (
             <Link class="btn btn-primary text-light float-end fw-bold" to="/user/login" style={{marginLeft : "30%"}}>
-              Đăng Nhập
-            </Link>
+            Đăng Nhập
+          </Link>
+          ) : (
+            <p className="text-danger mt-2" style={{marginLeft : "30%"}}>Xin chào {username}</p>
+          )}
+            
       
         </ul>
 

@@ -1,9 +1,11 @@
 package com.example.turtlesportbe.model.auth;
 
-import com.example.turtlesportbe.model.Group;
+import com.example.turtlesportbe.model.Team;
 import com.example.turtlesportbe.model.LikeDetail;
 import com.example.turtlesportbe.model.News;
 import com.example.turtlesportbe.model.Post;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -13,18 +15,21 @@ import java.util.Set;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer accountId;
+    private Integer id;
     @Column(name = "username", nullable = false)
     private String username;
+    @JsonIgnore
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
+    @JsonBackReference
     @OneToMany(mappedBy = "account")
     private Set<Post> posts;
     @ManyToOne
-    @JoinColumn(name = "group_id", referencedColumnName = "id")
-    private Group group;
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
+    private Team team;
+    @JsonBackReference
     @OneToMany(mappedBy = "account")
     private Set<LikeDetail> likeDetails;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -32,6 +37,7 @@ public class Account {
             joinColumns = @JoinColumn(name = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roleSet;
+    @JsonBackReference
     @OneToMany(mappedBy = "account")
     private Set<News> newsSet;
 
@@ -39,12 +45,12 @@ public class Account {
     public Account() {
     }
 
-    public Integer getAccountId() {
-        return accountId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
+    public void setId(Integer accountId) {
+        this.id = accountId;
     }
 
     public String getUsername() {
@@ -79,12 +85,12 @@ public class Account {
         this.roleSet = roleSet;
     }
 
-    public Group getGroup() {
-        return group;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     public Set<Post> getPosts() {

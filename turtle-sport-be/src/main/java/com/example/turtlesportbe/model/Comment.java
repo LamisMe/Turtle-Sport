@@ -14,9 +14,9 @@ public class Comment {
     private LocalDateTime date;
     private String content;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
-    private boolean idDeleted;
+    private boolean isDeleted;
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "accountId")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "id")
@@ -46,12 +46,12 @@ public class Comment {
         this.content = content;
     }
 
-    public boolean isIdDeleted() {
-        return idDeleted;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public void setIdDeleted(boolean idDeleted) {
-        this.idDeleted = idDeleted;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public Account getAccount() {

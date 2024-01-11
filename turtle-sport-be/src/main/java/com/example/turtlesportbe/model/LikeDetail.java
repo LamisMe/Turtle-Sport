@@ -15,7 +15,7 @@ public class LikeDetail {
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     boolean isDeleted ;
     @ManyToOne
-    @JoinColumn(name = "account_id",referencedColumnName = "accountId")
+    @JoinColumn(name = "account_id",referencedColumnName = "id")
     private Account account;
 
     @ManyToOne
