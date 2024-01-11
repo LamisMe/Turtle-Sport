@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { infoToken } from "../../service/AuthService";
+import ModalLogout from "../auth/ModalLogout";
 export function Header() {
   const [user,setUser] = useState(localStorage.getItem("user"));
   const [username,setUsername] = useState("");
   const inforUser = async() =>{
     const res = infoToken();
-    // console.log("gà",res);
+    // sub token;
     if(res != null){
       setUsername(res.sub)
     }
@@ -19,13 +20,13 @@ export function Header() {
     <>
         <ul class="nav justify-content-center text-secondary fw-bold m-3">
           <li class="nav-item">
-            <a
+            <Link
               class="nav-link active fw-bold text-primary"
               aria-current="page"
-              href="#"
+              to="/"
             >
               Trang Chủ
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
             <Link class="nav-link fw-bold text-dark" to="/tao-san">
@@ -48,15 +49,16 @@ export function Header() {
             </Link>
           </li>
           {!user ? (
-            <Link class="btn btn-primary text-light float-end fw-bold" to="/user/login" style={{marginLeft : "30%"}}>
+            <Link class="btn btn-primary text-light float-end fw-bold" to="/user/login" >
             Đăng Nhập
           </Link>
           ) : (
-            <p className="text-danger mt-2" style={{marginLeft : "28%"}}>Xin chào {username}</p>
+            <p className="text-danger m-2 d-flex justify-content-end" >Xin chào, {username}  <Link role="button" data-bs-toggle="modal" data-bs-target="#logout">
+            <i className="bx bxs-log-in-circle bx-xs"></i>
+        </Link></p>
           )}
-            
-      
         </ul>
+        <ModalLogout/>
     </>
   );
 }
