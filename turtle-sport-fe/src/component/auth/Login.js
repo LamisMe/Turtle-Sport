@@ -26,7 +26,6 @@ export function Login() {
       setDisableSubmit(true);
       await dispatch(loginUser(values));
       navigate("/");
-      toast.success("Đăng nhập thành công !");
     } catch (e) {
       setDisableSubmit(false);
       setFieldError("password", e.data);

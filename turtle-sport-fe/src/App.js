@@ -15,6 +15,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import store from "./redux/Store";
+import { ManagerEmployyee } from "./component/manager/ManagerEmployyee";
+import { ManagerStatistical } from "./component/manager/ManagerStatistical";
 function App() {
   return (
     <>
@@ -32,6 +34,8 @@ function App() {
           <Route path="/quan-ly" element={<ManagerOverview />} />
           <Route path="/dat-san" element={<CreateBooking />} />
           <Route path="/lich" element={<Calendar />} />
+          <Route path="/quan-ly/nhan-vien" element={<ManagerEmployyee />} />
+          <Route path="/quan-ly/thong-ke" element={<ManagerStatistical />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer/>

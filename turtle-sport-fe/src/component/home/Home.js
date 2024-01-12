@@ -3,7 +3,19 @@ import { Link } from "react-router-dom";
 import { infoToken } from "../../service/AuthService";
 import { Header } from "./Header";
 export function Home() {
-  
+  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [username, setUsername] = useState("");
+  const inforUser = async () => {
+    const res = infoToken();
+    // sub token;
+    if (res != null) {
+      setUsername(res.sub);
+    }
+  };
+
+  useEffect(() => {
+    inforUser();
+  }, []);
   return (
     <>
       <div class="container-fluid">
@@ -25,12 +37,20 @@ export function Home() {
                 Nâng tỉ lệ lấp đầy sân mùa nắng cũng như mùa mưa. Thoải mái quản
                 lý sân từ bất kỳ nơi nào
               </p>
-
-              <Link to="/user/login" activeClassName="active">
+              {!user ? (
+                  <Link to="/user/login" activeClassName="active">
+                  <button class="btn btn-primary mt-5 ms-5 fw-bold text-light">
+                    Bắt Đầu Ngay
+                  </button>
+                </Link>
+              ): (
+                <Link class="nav-link fw-bold text-dark" to="/tao-san">
                 <button class="btn btn-primary mt-5 ms-5 fw-bold text-light">
-                  Bắt Đầu Ngay
-                </button>
+                    Bắt Đầu Ngay
+                  </button>
               </Link>
+              )}
+              
             </div>
           </div>
         </div>
