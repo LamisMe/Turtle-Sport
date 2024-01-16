@@ -1,34 +1,10 @@
 import { Link } from "react-router-dom";
-import { Header } from "../home/Header";
+import { HeaderManager } from "../home/HeaderManager";
 export function ManagerOverview() {
   return (
     <>
-      <div class="container-fluid">
-        <Header />
-      </div>
-      <div className="container">
-        <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <Link class="nav-link active" aria-current="page" to="/quan-ly">
-              Lịch Sân
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/quan-ly/nhan-vien">
-              Quản Lý Nhân Viên
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/quan-ly/thong-ke">
-              Thống Kê
-            </Link>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Cài Đặt
-            </a>
-          </li>
-        </ul>
+      <div className="container-fluid">
+        <HeaderManager />
       </div>
 
       <div className="container">

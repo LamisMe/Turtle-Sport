@@ -1,0 +1,30 @@
+.error-container {
+    text-align: center;
+  }
+
+  .error-code {
+    font-size:8rem;
+    font-weight: bold;
+    color: #343a40;
+    margin: 0;
+  }
+
+  .error-message {
+    font-size: 2rem;
+    color: #343a40;
+    margin-bottom: 2rem;
+  }
+
+  .home-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+
+.notpage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}

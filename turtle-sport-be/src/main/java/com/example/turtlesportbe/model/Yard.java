@@ -21,6 +21,9 @@ public class Yard {
     @ManyToOne
     @JoinColumn(name = "customer_id",referencedColumnName = "id")
     private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "type_yard_id",referencedColumnName = "id")
+    private TypeYard typeYard;
 
 
     public Yard() {
@@ -105,5 +108,13 @@ public class Yard {
 
     public void setEndTime(Integer endTime) {
         this.endTime = endTime;
+    }
+
+    public TypeYard getTypeYard() {
+        return typeYard;
+    }
+
+    public void setTypeYard(TypeYard typeYard) {
+        this.typeYard = typeYard;
     }
 }

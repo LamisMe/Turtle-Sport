@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { infoToken } from "../../service/AuthService";
 import ModalLogout from "../auth/ModalLogout";
+import { useLocation } from "react-router-dom";
 
 export function Header() {
+  const location = useLocation();
   const [user, setUser] = useState(localStorage.getItem("user"));
   const [username, setUsername] = useState("");
   const inforUser = async () => {
@@ -24,7 +26,7 @@ export function Header() {
           <Link class="navbar-brand" to="/">
             <img
               src="turtle-sport-favicon-color.png"
-              alt=""
+              alt="logo"
               className="w-100"
             />
           </Link>
@@ -33,9 +35,10 @@ export function Header() {
           <ul class="nav justify-content-center text-secondary fw-bold m-3">
             <li class="nav-item">
               <Link
-                class="nav-link active fw-bold text-dark"
+                class={`nav-link fw-bold  ${location.pathname === '/' ? 'active' : 'text-dark'}`}
                 aria-current="page"
                 to="/"
+                title="Trang Chủ"
               >
                 Trang Chủ
               </Link>
@@ -43,30 +46,35 @@ export function Header() {
             <li class="nav-item">
               {!user ? (
                 <Link
-                  to="/user/login"
+                  to="/login"
                   className="nav-link active fw-bold text-dark"
                   activeClassName="active"
+                  title="Dành Cho Chủ Sân"
                 >
                   Dành Cho Chủ Sân
                 </Link>
               ) : (
-                <Link class="nav-link fw-bold text-dark" to="/quan-ly">
+                <Link
+                  class="nav-link fw-bold text-dark"
+                  to="/quan-ly"
+                  title="Dành Cho Chủ Sân"
+                >
                   Dành Cho Chủ Sân{" "}
                 </Link>
               )}
             </li>
             <li class="nav-item">
-              <Link class="nav-link text-dark" to="/tin-tuc">
+              <Link class={`nav-link fw-bold  ${location.pathname === '/tin-tuc' ? 'active' : 'text-dark'}`} to="/tin-tuc" title="Tin Tức">
                 Tin Tức
               </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="#">
+              <a class="nav-link text-dark" href="#" title="Cộng Đồng">
                 Cộng Đồng
               </a>
             </li>
             <li class="nav-item">
-              <Link class="nav-link text-dark" to="/san-bong">
+              <Link class={`nav-link fw-bold  ${location.pathname === '/san-bong' ? 'active' : 'text-dark'}`} to="/san-bong" title="Sân Bóng">
                 Sân Bóng
               </Link>
             </li>

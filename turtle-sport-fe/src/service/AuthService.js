@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../service/axiosConfig";
 import { jwtDecode } from "jwt-decode";
 
 export default function authHeader() {

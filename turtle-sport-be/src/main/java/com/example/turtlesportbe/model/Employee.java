@@ -22,6 +22,10 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "customer_id",referencedColumnName = "id")
     private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "type_employee_id",referencedColumnName = "id")
+    private TypeEmployee typeEmployee;
+
 
     public Employee() {
     }
@@ -80,5 +84,13 @@ public class Employee {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public TypeEmployee getTypeEmployee() {
+        return typeEmployee;
+    }
+
+    public void setTypeEmployee(TypeEmployee typeEmployee) {
+        this.typeEmployee = typeEmployee;
     }
 }

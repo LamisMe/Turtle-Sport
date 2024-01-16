@@ -5,7 +5,6 @@ export const loginUser = (account) => async (dispatch) => {
     try {
         let res = await authService.login(account);
         localStorage.setItem('user', JSON.stringify(res));
-        console.log("1");
         dispatch({
             type: GET_USER_LOGIN,
             payload: res,

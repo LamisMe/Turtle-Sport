@@ -17,6 +17,9 @@ import { Provider } from "react-redux";
 import store from "./redux/Store";
 import { ManagerEmployyee } from "./component/manager/ManagerEmployyee";
 import { ManagerStatistical } from "./component/manager/ManagerStatistical";
+import Address from "./component/location/Address";
+import { Page404NotFound } from "./component/home/Page404NotFound";
+import { Setting } from "./component/manager/Setting";
 function App() {
   return (
     <>
@@ -25,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/san-bong" element={<YardListOverView />} />
-          <Route path="/user/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/ho-so" element={<InfomationOverview />} />
           <Route path="/thong-bao" element={<NotificationOverView />} />
           <Route path="/tin-tuc" element={<NewsOverview />} />
@@ -34,8 +37,11 @@ function App() {
           <Route path="/quan-ly" element={<ManagerOverview />} />
           <Route path="/dat-san" element={<CreateBooking />} />
           <Route path="/lich" element={<Calendar />} />
-          <Route path="/quan-ly/nhan-vien" element={<ManagerEmployyee />} />
-          <Route path="/quan-ly/thong-ke" element={<ManagerStatistical />} />
+          <Route path="/nhan-vien" element={<ManagerEmployyee />} />
+          <Route path="/thong-ke" element={<ManagerStatistical />} />
+          <Route path="/location" element={<Address />} />
+          <Route path="/cai-dat" element={<Setting />} />
+          <Route path="*" element={<Page404NotFound />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer/>

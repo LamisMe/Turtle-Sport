@@ -1,14 +1,11 @@
-import { Link } from "react-router-dom";
-import { Header } from "../home/Header";
 import { HeaderManager } from "../home/HeaderManager";
-export function ManagerStatistical() {
+
+export function Setting() {
   return (
     <>
       <div className="container-fluid">
         <HeaderManager />
       </div>
-      <div className="container"></div>
-
       <div class="footer mt-4">
         <div class="container">
           <div class="footer-content">

@@ -19,7 +19,7 @@ export function Home() {
   return (
     <>
       <div class="container-fluid">
-        <Header/>
+        <Header />
         <div class="container form-control bg-light">
           <div class="row">
             <div class="col-md-6">
@@ -38,19 +38,18 @@ export function Home() {
                 lý sân từ bất kỳ nơi nào
               </p>
               {!user ? (
-                  <Link to="/user/login" activeClassName="active">
+                <Link to="/login" activeClassName="active">
                   <button class="btn btn-primary mt-5 ms-5 fw-bold text-light">
                     Bắt Đầu Ngay
                   </button>
                 </Link>
-              ): (
+              ) : (
                 <Link class="nav-link fw-bold text-dark" to="/tao-san">
-                <button class="btn btn-primary mt-5 ms-5 fw-bold text-light">
+                  <button class="btn btn-primary mt-5 ms-5 fw-bold text-light">
                     Bắt Đầu Ngay
                   </button>
-              </Link>
+                </Link>
               )}
-              
             </div>
           </div>
         </div>
@@ -114,7 +113,61 @@ export function Home() {
             </p>
           </div>
         </div>
+        <h2 class="fw-bold mt-5">Khách hàng nói gì về chúng tôi</h2>
+        <div className="row mt-5">
+          <div className="col-6 ">
+            <div class="card mb-3">
+              <div class="row g-0 shadow-sm bg-body rounded">
+                <div class="col-md-4">
+                  <img
+                    src="https://img.freepik.com/premium-vector/businessman-pointing-empty-copy-space-businessman-with-gesture_235461-414.jpg?size=626&ext=jpg"
+                    class="img-fluid w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <p class="card-text fst-italic">
+                      “Doanh thu hoạt động của sân được thể hiện rõ ràng. Báo
+                      cáo chi tiết dễ coi. Quản lý sân giờ nhàn!”
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted">
+                        Khu liên hiệp thể thao TNG - TpHCM
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-6">
+            <div class="card mb-3">
+              <div class="row g-0 shadow-sm bg-body rounded">
+                <div class="col-md-4">
+                  <img
+                    src="https://static.vecteezy.com/system/resources/previews/002/400/532/original/young-happy-businessman-character-avatar-wearing-business-outfit-isolated-free-vector.jpg"
+                    class="img-fluid w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <p class="card-text fst-italic">
+                      “Phần mềm giúp anh quản lý sân dễ dàng tiện lợi hơn, bớt
+                      thời gian ghi chép điện thoại trao đổi với nhân viên.”
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted">Giám đốc TT Sport</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="footer mt-4">
         <div class="container">
           <div class="footer-content">
