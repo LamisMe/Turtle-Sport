@@ -33,4 +33,9 @@ public class AccountService implements IAccountService {
     public Account getAccountByEmail(String email) {
         return accountRepository.getAccountByEmail(email);
     }
+
+    @Override
+    public Account findAccountByUsername(String user) {
+        return accountRepository.findAccountByUsername(user);
+    }
 }

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ITypeYardService {
     List<TypeYard> showListTypeYard();
+    TypeYard findById(Integer id);
 }

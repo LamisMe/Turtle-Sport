@@ -13,6 +13,7 @@ public class Yard {
     @Column(columnDefinition = "text")
     private String description;
     private Double price;
+    @Column(columnDefinition = "text")
     private String image;
     private Integer startTime;
     private Integer endTime;

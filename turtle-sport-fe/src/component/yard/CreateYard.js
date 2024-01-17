@@ -6,11 +6,15 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import * as YardService from "../../service/YardService";
 import { toast } from "react-toastify";
+import { infoToken } from "../../service/AuthService";
+
 
 export function CreateYard() {
   const [urlImages, setUrlImages] = useState([]);
   const [beError, setBeError] = useState();
   const [typeYards, setTypeYards] = useState();
+  const [username, setUsername] = useState("");
+
 
   const navigate = useNavigate();
   const onCallBack = (urls) => {
@@ -23,14 +27,34 @@ export function CreateYard() {
     setUrlImages((prevState) => [...prevState, ...urls]);
   };
 
+  const inforUser = async () => {
+    const res = await infoToken();
+    // sub token;
+    if (res != null) {
+      setUsername(res.sub);
+    }
+  };
+
   const createYard = async (values) => {
+    values = {
+      ...values,
+      image: urlImages.toString(),
+      customer: username
+    };
+    console.log(values);
+
     try {
+      console.log(1);
       let res = await YardService.CreateYard(values);
+      console.log(2);
       if (res.status === 201) {
         navigate("/quan-ly");
         toast(" Tạo mới sân thành công");
       } else if (res.status === 400) toast(" Tạo mới sân không thành công.");
-    } catch (e) {}
+    } catch (e) {
+      console.log(-1);
+      return -1;
+    }
   };
 
   const getTypeYard = async () => {
@@ -53,8 +77,7 @@ export function CreateYard() {
       .min(1, "Vui lòng nhập giờ mở cửa")
       .max(23, "Vui lòng nhập giờ không quá 23 giờ")
       .integer("Vui lòng nhập giờ đúng định dạng")
-      .typeError("Vui lòng nhập giờ đúng định dạng")
-      ,
+      .typeError("Vui lòng nhập giờ đúng định dạng"),
     endTime: Yup.number()
       .required("Không được để trống *")
       .min(2, "Vui lòng nhập giờ đóng cửa")
@@ -72,6 +95,7 @@ export function CreateYard() {
     description: Yup.string().required("Không được để trống *"),
     typeYard: Yup.number().required("Không được để trống *"),
     address: Yup.string().required("Không được để trống *"),
+    // image: Yup.string().required("Vui lòng load ảnh lên *"),
   };
 
   const changeValue = (e) => {
@@ -82,6 +106,7 @@ export function CreateYard() {
   };
 
   useEffect(() => {
+    inforUser()
     createYard();
     getTypeYard();
   }, []);
@@ -229,7 +254,9 @@ export function CreateYard() {
                 />
               </div>
               <div class="d-flex justify-content-center m-4">
-                <button class="btn btn-primary rounded-1">Tạo Mới</button>
+                <button type="submit" class="btn btn-primary rounded-1">
+                  Tạo Mới
+                </button>
               </div>
             </Form>
           </Formik>

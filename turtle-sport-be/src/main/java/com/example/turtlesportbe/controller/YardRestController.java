@@ -3,6 +3,9 @@ package com.example.turtlesportbe.controller;
 import com.example.turtlesportbe.dto.YardDto;
 import com.example.turtlesportbe.model.TypeYard;
 import com.example.turtlesportbe.model.Yard;
+import com.example.turtlesportbe.model.auth.Account;
+import com.example.turtlesportbe.service.IAccountService;
+import com.example.turtlesportbe.service.ICustomerService;
 import com.example.turtlesportbe.service.ITypeYardService;
 import com.example.turtlesportbe.service.IYardService;
 import org.springframework.beans.BeanUtils;
@@ -25,6 +28,10 @@ public class YardRestController {
     private IYardService yardService;
     @Autowired
     private ITypeYardService typeYardService;
+    @Autowired
+    private IAccountService accountService;
+    @Autowired
+    private ICustomerService customerService;
 
     @GetMapping("")
     public ResponseEntity<?> showYardPage(@RequestParam(defaultValue = "0", required = false) int page,
@@ -38,16 +45,21 @@ public class YardRestController {
         return new ResponseEntity<>(yardPage, HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<?> createYard(@RequestBody YardDto yardDto, BindingResult bindingResult) {
         Yard yard = new Yard();
         BeanUtils.copyProperties(yardDto, yard);
+        Account account = accountService.findAccountByUsername(yardDto.getCustomer());
+        yard.setCustomer(customerService.findCustomersByAccount_Id(account.getId()));
+        yard.setTypeYard(typeYardService.findById(yardDto.getTypeYard()));
         boolean isSuccess = yardService.createYard(yard);
         if (!isSuccess) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(yard, HttpStatus.CREATED);
     }
+
+
     @GetMapping("/type_yard")
     public ResponseEntity<?> showTypeYard() {
         List<TypeYard> typeYardList = typeYardService.showListTypeYard();

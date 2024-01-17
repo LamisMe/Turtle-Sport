@@ -13,7 +13,7 @@ public class YardDto implements Validator {
     private Integer startTime;
     private Integer endTime;
     private boolean isDeleted;
-    private Integer customer;
+    private String customer;
     private Integer typeYard;
 
     public YardDto() {
@@ -91,11 +91,11 @@ public class YardDto implements Validator {
         isDeleted = deleted;
     }
 
-    public Integer getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Integer customer) {
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 

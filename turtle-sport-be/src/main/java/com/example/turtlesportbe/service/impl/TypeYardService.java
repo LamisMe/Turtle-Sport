@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class TypeYardService implements ITypeYardService {
     @Autowired
@@ -14,5 +15,10 @@ public class TypeYardService implements ITypeYardService {
     @Override
     public List<TypeYard> showListTypeYard() {
         return typeYardRepository.findAll();
+    }
+
+    @Override
+    public TypeYard findById(Integer id) {
+        return typeYardRepository.findById(id).get();
     }
 }

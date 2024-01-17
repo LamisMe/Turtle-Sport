@@ -16,6 +16,7 @@ export function Header() {
     }
   };
 
+
   useEffect(() => {
     inforUser();
   }, []);
@@ -83,7 +84,7 @@ export function Header() {
         <div className="col-4 mt-3">
           {!user ? (
             <div className="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
-              <Link class="btn btn-primary me-md-4 btn-sm" to="/user/login">
+              <Link class="btn btn-primary me-md-4 btn-sm" to="/login">
                 Đăng Nhập
               </Link>
             </div>

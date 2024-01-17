@@ -8,7 +8,7 @@ import java.util.List;
 public class JwtResponse implements Validator {
     private String accessToken;
     private String tokenType = "Bearer";
-    private Long id;
+    private Integer id;
     private String username;
     private List<String> roles;
 
@@ -31,11 +31,11 @@ public class JwtResponse implements Validator {
         this.tokenType = tokenType;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

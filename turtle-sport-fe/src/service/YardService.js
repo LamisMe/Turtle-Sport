@@ -10,9 +10,11 @@ export const  YardList = async(address) => {
     }
 }
 
-export const  CreateYard = async(yard) => {
+export const  CreateYard = async (yard) => {
+    console.log(9);
     try{
-        let res = await axios.port(`http://localhost:8080/api/yards`,yard);
+        console.log("okmnjjjjj");
+        let res = await axios.port("http://localhost:8080/api/yards",yard);
         return res;
     }catch{
         return undefined;
