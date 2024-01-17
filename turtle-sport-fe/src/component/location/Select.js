@@ -12,7 +12,7 @@ const Select = ({ label, options, value, setValue, type, reset, name }) => {
                     id="floatingSelect"
                     aria-label="Floating label select example"
             >
-                <option value="">{`--Chọn ${label}--`}</option>
+                <option value="">{`Chọn ${label}`}</option>
                 {options?.map(item => {
                     return (
                         <option

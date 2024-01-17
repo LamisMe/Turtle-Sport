@@ -107,7 +107,6 @@ function YardImage(props) {
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();
-        // const timer = Swal.getPopup().querySelector("b");
         timerInterval = setInterval(() => {
           Swal.getTimerLeft();
         }, 100);

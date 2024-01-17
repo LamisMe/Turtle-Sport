@@ -1,4 +1,6 @@
 import { Header } from "../home/Header";
+import Address from "../location/Address";
+import AddressSearch from "../location/AddressSearch";
 import { YardList } from "./YardList";
 import { Link } from "react-router-dom";
 
@@ -22,6 +24,10 @@ export function YardListOverView() {
           <option value="Sân Hà Tĩnh" />
           <option value="Sân Chi Lăng" />
         </datalist>
+        <div>
+        <AddressSearch/>
+
+        </div>
         <div className="mt-5">
         <YardList/>
         </div>

@@ -16,4 +16,14 @@ public class YardService implements IYardService {
     public Page<Yard> showYardList(Pageable pageable, String nameSearch, String addressSearch) {
         return yardRepository.showYardList(pageable,"%"+nameSearch+"%","%"+addressSearch+"%");
     }
+
+    @Override
+    public boolean createYard(Yard yard) {
+        try{
+            yardRepository.save(yard);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }

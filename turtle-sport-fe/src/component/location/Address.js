@@ -35,8 +35,7 @@ const Address = () => {
     !province ? setReset(true) : setReset(false);
     !province && setDistricts([]);
   }, [province]);
-  console.log(provinces);
-  console.log(districts);
+
   return (
     <div>
       <div className="flex flex-col gap-4 mt-3">
@@ -64,18 +63,21 @@ const Address = () => {
             <div className="col-6 ">
               <div className="row">
                 <div className="col-5">
-                    <div className="form-floating ">
-                    <input
-                    type="email"
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="ABC Stadium"
-                  />
-                  <label for="floatingInput" className="text-primary">
-                    Địa chỉ <span className="text-danger">*</span>
-                  </label>
-                    </div>
-                  
+                  <div className="form-floating ">
+                    <Field
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder=""
+                      name="address"
+                    />
+                    <label for="floatingInput" className="text-primary">
+                      Địa chỉ <span className="text-danger">*</span>
+                    </label>
+                    <div className="text-danger fst-italic mt-2">
+                  <ErrorMessage select="small" name="address" />
+                </div>
+                  </div>
                 </div>
                 <div className="col-7 mt-4">
                   {`${
