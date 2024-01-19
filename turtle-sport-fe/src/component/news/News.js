@@ -2,8 +2,8 @@ export function News() {
   return (
     <>
       
-      <div className="container">
-        <h3 className="text-danger">Tin Mới Nhất <i class='bx bxs-hot bx-sm'></i></h3>
+      <div className="container mt-5">
+        <h3 className="text-danger pt-5">Tin Mới Nhất <i class='bx bxs-hot bx-sm'></i></h3>
         <div class="card mb-3" style={{ maxWwidth: "540px" }}>
           <div class="row g-0">
             <div class="col-md-4">

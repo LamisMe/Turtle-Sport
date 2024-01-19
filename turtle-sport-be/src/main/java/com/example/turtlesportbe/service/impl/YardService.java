@@ -26,4 +26,9 @@ public class YardService implements IYardService {
             return false;
         }
     }
+
+    @Override
+    public Yard findYardById(Integer id) {
+        return yardRepository.findYardById(id);
+    }
 }

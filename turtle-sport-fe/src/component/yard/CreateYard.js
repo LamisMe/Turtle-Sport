@@ -1,4 +1,4 @@
-import { Await, Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import Address from "../location/Address";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import YardImage from "./YardImage";
@@ -14,9 +14,9 @@ export function CreateYard() {
   const [beError, setBeError] = useState();
   const [typeYards, setTypeYards] = useState();
   const [username, setUsername] = useState("");
-
-
   const navigate = useNavigate();
+
+
   const onCallBack = (urls) => {
     if (urls) {
       setBeError((prevState) => ({
@@ -41,19 +41,12 @@ export function CreateYard() {
       image: urlImages.toString(),
       customer: username
     };
-    console.log(values);
-
-    try {
-      console.log(1);
-      let res = await YardService.CreateYard(values);
-      console.log(2);
-      if (res.status === 201) {
-        navigate("/quan-ly");
-        toast(" Tạo mới sân thành công");
-      } else if (res.status === 400) toast(" Tạo mới sân không thành công.");
-    } catch (e) {
-      console.log(-1);
-      return -1;
+    let isSuccess = await YardService.CreateYard(values);
+    if (isSuccess) {
+        navigate("/quan-ly")
+        toast.success(`Thêm mới sân thành công!`)
+    } else {
+        toast.error(`Thêm mới sân không thành công!`)
     }
   };
 
@@ -94,9 +87,8 @@ export function CreateYard() {
       ),
     description: Yup.string().required("Không được để trống *"),
     typeYard: Yup.number().required("Không được để trống *"),
-    address: Yup.string().required("Không được để trống *"),
-    // image: Yup.string().required("Vui lòng load ảnh lên *"),
-  };
+    address: Yup.string().required("Không được để trống *")
+    };
 
   const changeValue = (e) => {
     setBeError((prevState) => ({
@@ -107,7 +99,6 @@ export function CreateYard() {
 
   useEffect(() => {
     inforUser()
-    createYard();
     getTypeYard();
   }, []);
 
@@ -253,6 +244,9 @@ export function CreateYard() {
                   onInput={changeValue}
                 />
               </div>
+              <div className="text-danger fst-italic mt-2">
+                      <ErrorMessage select="small" name="image" />
+               </div>
               <div class="d-flex justify-content-center m-4">
                 <button type="submit" class="btn btn-primary rounded-1">
                   Tạo Mới

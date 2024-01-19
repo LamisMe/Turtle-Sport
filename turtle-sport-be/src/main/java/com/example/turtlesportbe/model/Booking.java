@@ -21,8 +21,9 @@ public class Booking {
     private boolean isDeleted;
     @Column(columnDefinition = "text")
     private String description;
-    private Integer startTimeBooking;
-    private Integer endTimeBooking;
+    @ManyToOne
+    @JoinColumn(name = "yard_id",referencedColumnName = "id")
+    private Yard yard;
 
     public Booking() {
     }
@@ -91,19 +92,11 @@ public class Booking {
         isDeleted = deleted;
     }
 
-    public Integer getStartTimeBooking() {
-        return startTimeBooking;
+    public Yard getYard() {
+        return yard;
     }
 
-    public void setStartTimeBooking(Integer startTimeBooking) {
-        this.startTimeBooking = startTimeBooking;
-    }
-
-    public Integer getEndTimeBooking() {
-        return endTimeBooking;
-    }
-
-    public void setEndTimeBooking(Integer endTimeBooking) {
-        this.endTimeBooking = endTimeBooking;
+    public void setYard(Yard yard) {
+        this.yard = yard;
     }
 }

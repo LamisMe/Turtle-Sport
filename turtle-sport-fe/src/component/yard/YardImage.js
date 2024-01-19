@@ -156,7 +156,7 @@ function YardImage(props) {
                     disabled={filesUpload.find((f) => f.name === file.name)}
                   >
                     <i
-                      className="bi bi-x text-danger fw-bold fs-1"
+                      className="bi bi-x text-light fw-bold fs-1"
                       hidden={filesUpload.find((f) => f.name === file.name)}
                     />
                   </button>
@@ -178,13 +178,17 @@ function YardImage(props) {
       <div>
         {files.length > 0 && (
           <button
-            className="mt-4 btn btn-primary"
+            className="mt-2 btn btn-primary"
             variant="outline-dark"
             onClick={handleUpload}
             disabled={files.length === filesUpload.length}
           >
             <i className="bi bi-cloud-arrow-up" /> Tải ảnh lên
           </button>
+          
+        )}
+        {files.length > 0 && (
+        <p className="fst-italic mt-3 text-danger">Lưu ý: Phải tải ảnh lên mới lưu vào</p> 
         )}
         {isLoading && showSweetAlert()}
       </div>

@@ -45,10 +45,13 @@ public class YardRestController {
         return new ResponseEntity<>(yardPage, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<?> createYard(@RequestBody YardDto yardDto, BindingResult bindingResult) {
+    @PostMapping("/create")
+    public ResponseEntity<?> createYard(@RequestBody YardDto yardDto) {
         Yard yard = new Yard();
         BeanUtils.copyProperties(yardDto, yard);
+        if (yardDto.getImage().equals("")){
+            yard.setImage("https://firebasestorage.googleapis.com/v0/b/rafepev.appspot.com/o/files%2Fthumb_aa7193a9-f942-408d-b4d6-b0ebac74e2bd.jpg?alt=media&token=9e2c8c1a-9742-4557-b7e4-8f37144b2288");
+        }
         Account account = accountService.findAccountByUsername(yardDto.getCustomer());
         yard.setCustomer(customerService.findCustomersByAccount_Id(account.getId()));
         yard.setTypeYard(typeYardService.findById(yardDto.getTypeYard()));
@@ -68,4 +71,13 @@ public class YardRestController {
         }
         return new ResponseEntity<>(typeYardList,HttpStatus.OK);
     }
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<?> showYardDetail(@PathVariable Integer id) {
+        Yard yard = yardService.findYardById(id);
+        if (yard==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(yard,HttpStatus.OK);
+    }
+
 }

@@ -33,3 +33,12 @@ export const infoToken = () => {
         return null;
     }
 }
+
+export const getRoleByJwt = () => {
+    const jwt = localStorage.getItem("user");
+    if (jwt) {
+        return jwtDecode(jwt).role[0].authority;
+    } else {
+        return null;
+    }
+};

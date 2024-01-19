@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 export function CreateBooking(){
+  const { id } = useParams();
     return(
         <>
         <div class="container-fluid form-control">
-        <Link to="/quan-ly"><i class="bx bx-arrow-back bx-md"></i></Link>
+        <Link to={`/chi-tiet/${id}`}><i class="bx bx-arrow-back bx-md"></i></Link>
         <h3 class="text-center mt-2 fs-4">Tạo Lịch Đặt Mới</h3>
         <p class="text-secondary text-center">
           Chúng tôi chúc bạn có trải nghiệm tốt nhất với những dịch vụ của chúng tôi mang lại, hãy đảm bảo bạn tuân thủ đúng luật của 

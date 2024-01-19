@@ -1,0 +1,131 @@
+/*header*/
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    border-bottom: 1px solid #e7bab0;
+}
+
+/*notification*/
+.notification {
+    height: 27%;
+    color: #eee;
+    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    display: flex;
+    cursor: default;
+}
+
+.notification-text {
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif, serif;
+    font-style: italic;
+}
+
+/*vertical line*/
+.vertical-line {
+    width: 1px;
+    background-color: #202228;
+    height: 28px;
+}
+
+/*signin button and cart button*/
+
+
+
+
+
+/*navbar text*/
+
+
+.header-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.header-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+
+
+
+
+
+/*logo img*/
+.header-logo {
+    height: 40px;
+    scale: 1.2;
+}
+
+/*header navlink*/
+.header-nav-link {
+    padding-left: 15px;
+    text-decoration: none;
+    color: #282c34;
+}
+
+@media screen and (max-width: 960px) {
+    .vertical-line {
+        display: none;
+    }
+}
+
+.nav-link {
+    font-family: "Bookman Old Style", sans-serif;
+}
+
+/*back to top btn*/
+#scrollToTop {
+    position: fixed;
+    left: 95%;
+    bottom: 5%;
+    border: 2px #e7bab0 solid;
+    border-radius: 3px;
+    background-color: #eeeeee;
+    color: #e7bab0;
+    transition: .3s ease-out;
+    font-size: 16px;
+    width: 45px;
+    z-index: 1;
+}
+
+@media screen and (max-width: 992px) {
+    #scrollToTop {
+        left: 90%;
+    }
+
+    .user-fullname {
+        font-family: "Bookman Old Style", sans-serif;
+        color: gray;
+        font-weight: normal;
+        padding-left: 0;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #scrollToTop {
+        left: 85%;
+        z-index: 1;
+    }
+
+    .user-fullname {
+        font-family: "Bookman Old Style", sans-serif;
+        color: gray;
+        font-weight: normal;
+        padding-left: 0;
+        font-size: 15px;
+    }
+}
+

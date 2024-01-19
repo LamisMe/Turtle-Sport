@@ -14,4 +14,5 @@ public interface IYardRepository extends JpaRepository<Yard,Integer> {
     Page<Yard> showYardList(Pageable pageable,
                             @Param("nameSearch") String nameSearch,
                             @Param("addressSearch") String addressSearch);
+    Yard findYardById(Integer id);
 }

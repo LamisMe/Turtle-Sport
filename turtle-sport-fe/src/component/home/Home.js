@@ -18,10 +18,9 @@ export function Home() {
   }, []);
   return (
     <>
-      <div class="container-fluid">
         <Header />
-        <div class="container form-control bg-light">
-          <div class="row">
+        <div class="container form-control bg-light pt-5">
+          <div class="row mt-5">
             <div class="col-md-6">
               <img
                 src="https://sport5.mediacdn.vn/158855217956261888/2020/4/25/mahibadhoo-maale-15874692805681338504150-1587823720891-15878237210941829428724.jpg"
@@ -53,7 +52,6 @@ export function Home() {
             </div>
           </div>
         </div>
-      </div>
 
       <div class="container mt-5">
         <h2 class="fw-bold">Quản lý sân bóng với chúng tôi</h2>

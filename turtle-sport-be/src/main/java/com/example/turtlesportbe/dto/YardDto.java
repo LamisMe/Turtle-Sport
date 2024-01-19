@@ -14,6 +14,8 @@ public class YardDto implements Validator {
     private Integer endTime;
     private boolean isDeleted;
     private String customer;
+    private String district;
+    private String province;
     private Integer typeYard;
 
     public YardDto() {
@@ -105,6 +107,22 @@ public class YardDto implements Validator {
 
     public void setTypeYard(Integer typeYard) {
         this.typeYard = typeYard;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     @Override

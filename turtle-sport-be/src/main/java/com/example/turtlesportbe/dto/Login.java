@@ -11,7 +11,7 @@ public class Login implements Validator  {
 
     @NotBlank(message = "Trường username không được để trống.")
     @NotNull(message = "Trường username không được null")
-    @Pattern(regexp = "^[a-zA-Z0-9_]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
+    @Pattern(regexp = "^[a-zA-Z0-9_@.]+$",message = "Chỉ được chứa ký tự alphabet, số và dấu gạch dưới")
     @Size(min = 4,message = "Username phải trên 4 kí tự")
     @Size(max = 100,message = "Username phải ít hơn 100 ký tự")
     private String username;

@@ -20,6 +20,7 @@ import { ManagerStatistical } from "./component/manager/ManagerStatistical";
 import Address from "./component/location/Address";
 import { Page404NotFound } from "./component/home/Page404NotFound";
 import { Setting } from "./component/manager/Setting";
+import { YardDetail } from "./component/yard/YardDetail";
 function App() {
   return (
     <>
@@ -35,11 +36,12 @@ function App() {
           <Route path="/cau-lac-bo" element={<GroupOverview />} />
           <Route path="/tao-san" element={<CreateYard />} />
           <Route path="/quan-ly" element={<ManagerOverview />} />
-          <Route path="/dat-san" element={<CreateBooking />} />
+          <Route path="/dat-san/:id" element={<CreateBooking />} />
           <Route path="/lich" element={<Calendar />} />
           <Route path="/nhan-vien" element={<ManagerEmployyee />} />
           <Route path="/thong-ke" element={<ManagerStatistical />} />
           <Route path="/location" element={<Address />} />
+          <Route path="/chi-tiet/:id" element={<YardDetail />} />
           <Route path="/cai-dat" element={<Setting />} />
           <Route path="*" element={<Page404NotFound />} />
         </Routes>

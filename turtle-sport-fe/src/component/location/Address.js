@@ -80,6 +80,14 @@ const Address = () => {
                   </div>
                 </div>
                 <div className="col-7 mt-4">
+                <Field
+                      type="hidden"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder=""
+                      name="district"
+                      value = {districts.district_name}
+                    />
                   {`${
                     district
                       ? `${
