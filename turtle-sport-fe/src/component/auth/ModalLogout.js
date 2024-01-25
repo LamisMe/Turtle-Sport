@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
+import OldPathTracker from './OldPath';
 
 function ModalLogout() {
     const navigate = useNavigate();
+    const [oldPath, setOldPath] = useState('');
     const logOutUser = async () => {
         await localStorage.removeItem('user');
-        window.location.href = '/';
+        window.location.href = "/login";
     };
 
     return (
         <>
+        <OldPathTracker/>
             <div className="modal fade" id="logout" tabIndex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div className="modal-dialog">

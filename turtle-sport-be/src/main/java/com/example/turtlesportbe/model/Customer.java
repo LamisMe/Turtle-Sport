@@ -27,9 +27,7 @@ public class Customer {
     @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Booking> bookings;
-    @JsonBackReference
-    @OneToMany(mappedBy = "customer")
-    private Set<Employee> employee;
+
     @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Yard> yards;
@@ -107,14 +105,6 @@ public class Customer {
 
     public void setBookings(Set<Booking> bookings) {
         this.bookings = bookings;
-    }
-
-    public Set<Employee> getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Set<Employee> employee) {
-        this.employee = employee;
     }
 
     public Set<Yard> getYards() {

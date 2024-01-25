@@ -27,4 +27,9 @@ public class CustomerService implements ICustomerService {
     public List<ICustomer> getAllYardCustomer(String name) {
         return customerRepository.getAllYardCustomer(name);
     }
+
+    @Override
+    public Customer findCustomerByAccount_Username(String username) {
+        return customerRepository.findCustomerByAccount_Username(username);
+    }
 }

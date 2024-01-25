@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IYardService {
-    Page<Yard> showYardList(Pageable pageable,String nameSearch,String addressSearch);
+    Page<Yard> showYardList(Pageable pageable,String nameSearch);
     boolean createYard(Yard yard);
     Yard findYardById(Integer id);
 

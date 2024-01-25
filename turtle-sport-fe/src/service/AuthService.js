@@ -1,4 +1,4 @@
-import axios from "../service/axiosConfig";
+import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 export default function authHeader() {
@@ -16,7 +16,6 @@ export default function authHeader() {
 
 export const login = async (account) => {
     try {
-        
         let res = await axios.post("http://localhost:8080/api/login", account);
         return res.data;
     } catch (e) {

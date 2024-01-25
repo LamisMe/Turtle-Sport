@@ -13,8 +13,8 @@ public class YardService implements IYardService {
     @Autowired
     private IYardRepository yardRepository;
     @Override
-    public Page<Yard> showYardList(Pageable pageable, String nameSearch, String addressSearch) {
-        return yardRepository.showYardList(pageable,"%"+nameSearch+"%","%"+addressSearch+"%");
+    public Page<Yard> showYardList(Pageable pageable, String nameSearch) {
+        return yardRepository.showYardList(pageable,"%"+nameSearch+"%");
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.example.turtlesportbe.model.auth;
 
-import com.example.turtlesportbe.model.Team;
+import com.example.turtlesportbe.model.Customer;
 import com.example.turtlesportbe.model.LikeDetail;
 import com.example.turtlesportbe.model.News;
 import com.example.turtlesportbe.model.Post;
@@ -26,13 +26,10 @@ public class Account {
     @JsonBackReference
     @OneToMany(mappedBy = "account")
     private Set<Post> posts;
-    @ManyToOne
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private Team team;
     @JsonBackReference
     @OneToMany(mappedBy = "account")
     private Set<LikeDetail> likeDetails;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "account_roles",
             joinColumns = @JoinColumn(name = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -40,6 +37,7 @@ public class Account {
     @JsonBackReference
     @OneToMany(mappedBy = "account")
     private Set<News> newsSet;
+
 
 
     public Account() {
@@ -85,13 +83,6 @@ public class Account {
         this.roleSet = roleSet;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 
     public Set<Post> getPosts() {
         return posts;

@@ -1,3 +1,3 @@
-// AUTH
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
-
+export const GET_ADD_FOLLOW = "GET_ADD_FOLLOW";
+export const GET_FOLLOW_ACCOUNT = "GET_FOLLOW_ACCOUNT";

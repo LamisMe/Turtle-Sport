@@ -10,9 +10,8 @@ import org.springframework.data.repository.query.Param;
 public interface IYardRepository extends JpaRepository<Yard,Integer> {
     @Query(value = "select y.id,y.`name`,y.address,y.`description`,y.end_time,y.price,y.start_time,y.image,y.customer_id,y.is_deleted,y.type_yard_id\n" +
             "from yards y\n" +
-            "where y.is_deleted = 0 and y.name like :nameSearch and y.address like :addressSearch ",nativeQuery = true)
+            "where y.is_deleted = 0 and (y.name like :nameSearch or y.address like :nameSearch) ",nativeQuery = true)
     Page<Yard> showYardList(Pageable pageable,
-                            @Param("nameSearch") String nameSearch,
-                            @Param("addressSearch") String addressSearch);
+                            @Param("nameSearch") String nameSearch);
     Yard findYardById(Integer id);
 }

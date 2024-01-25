@@ -1,6 +1,5 @@
 package com.example.turtlesportbe.repository;
 
-import com.example.turtlesportbe.dto.EmployeeDto;
 import com.example.turtlesportbe.model.auth.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

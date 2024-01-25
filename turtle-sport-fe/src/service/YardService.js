@@ -1,10 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const YardList = async (address) => {
+export const YardList = async (currentPage,address) => {
   try {
-    const res = await axios.get(
-      `http://localhost:8080/api/yards?address=${address}`);
+    
+    let res = await axios.get(`http://localhost:8080/api/yards?page=${currentPage}&nameSearch=${address}`);
     return res;
   } catch (e){
     return undefined;
@@ -13,7 +13,6 @@ export const YardList = async (address) => {
 
 export const CreateYard = async (yardDto) => {
   try {
-    console.log(yardDto);
     await axios.post(`http://localhost:8080/api/yards/create`, yardDto);
     return true;
   } catch (e){

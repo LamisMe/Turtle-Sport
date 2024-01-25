@@ -9,4 +9,5 @@ public interface ICustomerService {
     Customer findCustomersByAccount_Id(Integer id);
     ICustomer getTotalYardByCustomer(String name);
     List<ICustomer> getAllYardCustomer(String name);
+    Customer findCustomerByAccount_Username(String username);
 }

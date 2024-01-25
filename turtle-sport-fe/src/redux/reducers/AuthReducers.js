@@ -1,4 +1,4 @@
-import { GET_INFO_USER, GET_USER_LOGIN } from "../constant";
+import { GET_USER_LOGIN } from "../constant";
 
 export const authReducer = (auth = {}, action) => {
   const { type, payload } = action;

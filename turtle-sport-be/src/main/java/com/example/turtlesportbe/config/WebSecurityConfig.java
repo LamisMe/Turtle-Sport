@@ -51,15 +51,15 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
                                 .requestMatchers("/api/**").permitAll()
-                                .requestMatchers("/api/news/list").permitAll()
-                                .requestMatchers("/api/yards/list").permitAll()
-                                .requestMatchers("/api/customers/total").permitAll()
+//                                .requestMatchers("/api/news/list").permitAll()
+//                                .requestMatchers("/api/yards/list").permitAll()
+//                                .requestMatchers("/api/customers/total").permitAll()
 //                        Trang cần có quyền hợp lệ
-                                .requestMatchers("/api/bookings/**").hasAnyRole("MANAGER","ADMIN","EMPLOYEE")
-                                .requestMatchers("/api/yards/create").hasAnyRole("MANAGER","ADMIN","CUSTOMER")
+//                                .requestMatchers("/api/bookings/**").hasAnyRole("MANAGER","ADMIN","EMPLOYEE")
+//                                .requestMatchers("/api/yards/create").hasAnyRole("MANAGER","ADMIN","CUSTOMER")
 //                                .requestMatchers("/api/customers/**").hasAnyRole("MANAGER","ADMIN")
 //                                .requestMatchers("/api/employees/**").hasAnyRole("MANAGER","ADMIN")
-                                .requestMatchers("/api/news/**").hasAnyRole("ADMIN")
+//                                .requestMatchers("/api/news/**").hasAnyRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

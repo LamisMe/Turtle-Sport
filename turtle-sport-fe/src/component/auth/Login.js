@@ -1,15 +1,17 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState} from 'react';
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { loginUser } from "../../redux/middlewares/AuthMiddleware";
+import OldPathTracker from "./OldPath";
 
 export function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [oldPath, setOldPath] = useState("");
   const [disableSubmit, setDisableSubmit] = useState(false);
   const initValues = {
     username: "",
@@ -25,7 +27,7 @@ export function Login() {
     try {
       setDisableSubmit(true);
       await dispatch(loginUser(values));
-      navigate("/");
+      window.location.href = "/";
     } catch (e) {
       setDisableSubmit(false);
       setFieldError("password", e.data);
@@ -33,15 +35,16 @@ export function Login() {
   };
   return (
     <>
-      <div class="wrapper">
-        <div class="container main">
-          <div class="row" id="row">
-            <div class="col-md-6 side-image">
+
+      <div className="wrapper mt-3">
+        <div className="container main">
+          <div className="row" id="row">
+            <div className="col-md-6 side-image">
               <img src="images/white.png" alt="" />
-              <div class="text"></div>
+              <div className="text"></div>
             </div>
-            <div class="col-md-6 right">
-              <div class="input-box">
+            <div className="col-md-6 right">
+              <div className="input-box">
                 <header>Đăng Nhập</header>
                 <Formik
                   initialValues={initValues}
@@ -51,10 +54,10 @@ export function Login() {
                   validationSchema={validateFormLogin}
                 >
                   <Form>
-                    <div class="input-field">
+                    <div className="input-field">
                       <Field
                         type="text"
-                        class="input"
+                        className="input"
                         id="email"
                         required=""
                         autocomplete="off"
@@ -69,10 +72,10 @@ export function Login() {
                         component="small"
                       />
                     </div>
-                    <div class="input-field mt-3">
+                    <div className="input-field mt-3">
                       <Field
                         type="password"
-                        class="input"
+                        className="input"
                         id="pass"
                         required=""
                         name="password"
@@ -86,12 +89,16 @@ export function Login() {
                         component="small"
                       />
                     </div>
-                    <div class="input-field">
-                      <button type="submit" className="btn btn-primary" disabled={disableSubmit}>
+                    <div className="input-field">
+                      <button
+                        type="submit"
+                        className="btn btn-primary"
+                        disabled={disableSubmit}
+                      >
                         Đăng nhập
                       </button>
                     </div>
-                    <div class="signin">
+                    <div className="signin">
                       <span>
                         Bạn chưa có tài khoản? <a href="#">Đăng ký</a>
                       </span>

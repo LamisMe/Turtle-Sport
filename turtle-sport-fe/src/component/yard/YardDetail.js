@@ -2,6 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import * as YardService from "../../service/YardService";
 import { useEffect, useState } from "react";
 import { infoToken } from "../../service/AuthService";
+import { addFollow } from "../../service/FollowService";
+import * as CusService from "../../service/CustomerService";
+import OldPathTracker from "../auth/OldPath";
 
 export function YardDetail() {
   const { id } = useParams();
@@ -9,17 +12,39 @@ export function YardDetail() {
   const [user, setUser] = useState(localStorage.getItem("user"));
   const [username, setUsername] = useState("");
   const vnd = new Intl.NumberFormat("vi-VN", {});
+  const [customer, setCustomer] = useState([]);
+
   const inforUser = async () => {
     const res = infoToken();
     // sub token;
     if (res != null) {
       setUsername(res.sub);
+      let con = await CusService.getInfoCus(res.sub);
+      setCustomer(con);
     }
   };
 
   useEffect(() => {
     inforUser();
   }, []);
+
+  const [oldPath, setOldPath] = useState("");
+
+  const handleOldPathChange = (newPath) => {
+    setOldPath(newPath);
+  };
+
+  const handlerSubmitFollow = async () => {
+    if (customer != undefined) {
+      await addFollow(customer.id, id);
+    } else {
+      if (username === "lam09") {
+        await addFollow(1, id);
+      } else if (username === "hunghlp") {
+        await addFollow(2, id);
+      }
+    }
+  };
 
   const getYard = async (id) => {
     try {
@@ -46,31 +71,43 @@ export function YardDetail() {
   }
   return (
     <>
-      <div className="container-fluid">
-        <Link to="/san-bong">
-          <i class="bx bx-arrow-back bx-md"></i>
-        </Link>
-        <div className="container w-50 mt-3">
-          <div class="text-center">
+      <OldPathTracker onOldPathChange={handleOldPathChange} />
+      <div className="container-fluid mt-1">
+        <div className="container w-50 mt-2">
+          <div className="text-center">
             <img
               src={yard.image}
-              class="img-"
+              className="img-"
               alt="..."
               style={{ width: "725px", height: "384px", objectFit: "cover" }}
             ></img>
           </div>
-          <h2
-            className="mt-3"
-            style={{ fontWeight: "700", fontFamily: "sans-serif" }}
-          >
-            {yard.name}
-          </h2>
+          <div className="row">
+            <div className="col-9">
+              <h2
+                className="mt-3"
+                style={{ fontWeight: "700", fontFamily: "sans-serif" }}
+              >
+                {yard.name}
+              </h2>
+            </div>
+            <div className="col-3 mt-3">
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                onClick={() => handlerSubmitFollow()}
+              >
+                Theo dõi <i class="bx bx-rss"></i>
+              </button>
+            </div>
+          </div>
+
           <p>{yard.description}</p>
           <h5
             className=""
             style={{ fontWeight: "600", fontFamily: "sans-serif" }}
           >
-            <i class="bx bxs-phone bx-sm"></i>Số điện thoại
+            <i className="bx bxs-phone bx-sm"></i>Số điện thoại
           </h5>
           {!user ? (
             <Link
@@ -87,7 +124,7 @@ export function YardDetail() {
             className="mt-2"
             style={{ fontWeight: "600", fontFamily: "sans-serif" }}
           >
-            <i class="bx bx-dollar bx-sm"></i>
+            <i className="bx bx-dollar bx-sm"></i>
             Giá sân
           </h5>
           <p className="ms-3 text-danger fw-bold">
@@ -97,7 +134,7 @@ export function YardDetail() {
             className="mt-2"
             style={{ fontWeight: "600", fontFamily: "sans-serif" }}
           >
-            <i class="bx bx-current-location bx-sm"></i> Địa chỉ
+            <i className="bx bx-current-location bx-sm"></i> Địa chỉ
           </h5>
           <p className="ms-3">{yard.address}</p>
           <h5
@@ -115,10 +152,10 @@ export function YardDetail() {
               objectFit: "cover",
             }}
           ></img>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end ms-5 mt-3 mb-5  ">
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end ms-5 mt-3 mb-5  ">
             {!user ? (
               <Link
-                class="btn btn-danger me-md-2 btn-sm text-light"
+                className="btn btn-danger me-md-2 btn-sm text-light"
                 type="button"
                 to="/login"
               >
@@ -127,12 +164,12 @@ export function YardDetail() {
             ) : (
               <Link
                 to={`/dat-san/${yard.id}`}
-                class="btn btn-danger me-md-2 btn-sm text-light"
+                className="btn btn-danger me-md-2 btn-sm text-light"
                 type="button"
               >
                 Đặt Sân Ngay{" "}
                 <i
-                  class="bx bxs-hand-left animate__animated animate__bounce text-warning"
+                  className="bx bxs-hand-left animate__animated animate__bounce text-warning"
                   style={{
                     animationIterationCount: "infinite",
                     animationDuration: "1s",

@@ -43,7 +43,7 @@ export function CreateYard() {
     };
     let isSuccess = await YardService.CreateYard(values);
     if (isSuccess) {
-        navigate("/quan-ly")
+        navigate("/")
         toast.success(`Thêm mới sân thành công!`)
     } else {
         toast.error(`Thêm mới sân không thành công!`)
@@ -105,7 +105,7 @@ export function CreateYard() {
   if (!typeYards) return null;
   return (
     <>
-      <div class="container-fluid form-control">
+      <div class="container-fluid form-control mt-3">
         <Link to="/">
           <i class="bx bx-arrow-back bx-md"></i>
         </Link>

@@ -4,7 +4,6 @@ import { Header } from "../home/Header";
 export function NewsOverview() {
   return (
     <>
-      <Header />
       <News />
     </>
   );

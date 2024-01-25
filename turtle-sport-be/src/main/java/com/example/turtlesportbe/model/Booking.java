@@ -12,13 +12,12 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
-    @ManyToOne
-    @JoinColumn(name = "employye_id", referencedColumnName = "id")
-    private Employee employee;
     private String nameBooking;
     private String phoneNumber;
     @Column(name = "is_deleted", columnDefinition = "int(1) default 0")
     private boolean isDeleted;
+    @Column(name = "payment", columnDefinition = "int(1) default 0")
+    private boolean payment;
     @Column(columnDefinition = "text")
     private String description;
     @ManyToOne
@@ -50,14 +49,6 @@ public class Booking {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public String getNameBooking() {
@@ -98,5 +89,13 @@ public class Booking {
 
     public void setYard(Yard yard) {
         this.yard = yard;
+    }
+
+    public boolean isPayment() {
+        return payment;
+    }
+
+    public void setPayment(boolean payment) {
+        this.payment = payment;
     }
 }

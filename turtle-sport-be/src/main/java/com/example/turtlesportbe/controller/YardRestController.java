@@ -35,10 +35,9 @@ public class YardRestController {
 
     @GetMapping("")
     public ResponseEntity<?> showYardPage(@RequestParam(defaultValue = "0", required = false) int page,
-                                          @RequestParam(defaultValue = "", required = false) String nameSearch,
-                                          @RequestParam(defaultValue = "", required = false) String addressSearch) {
-        Pageable pageable = PageRequest.of(page, 10);
-        Page<Yard> yardPage = yardService.showYardList(pageable, nameSearch, addressSearch);
+                                          @RequestParam(name = "nameSearch",defaultValue = "", required = false) String nameSearch) {
+        Pageable pageable = PageRequest.of(page, 6);
+        Page<Yard> yardPage = yardService.showYardList(pageable, nameSearch);
         if (yardPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -55,6 +54,7 @@ public class YardRestController {
         Account account = accountService.findAccountByUsername(yardDto.getCustomer());
         yard.setCustomer(customerService.findCustomersByAccount_Id(account.getId()));
         yard.setTypeYard(typeYardService.findById(yardDto.getTypeYard()));
+        yard.setPrice(150000.0);
         boolean isSuccess = yardService.createYard(yard);
         if (!isSuccess) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

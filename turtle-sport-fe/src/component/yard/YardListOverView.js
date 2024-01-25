@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 export function YardListOverView() {
   return (
     <>
-        <Header/>
         <YardList/>
        
         

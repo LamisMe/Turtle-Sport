@@ -2,7 +2,6 @@ import "./App.css";
 import { Login } from "./component/auth/Login";
 import { Home } from "./component/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { YardListOverView } from "./component/yard/YardListOverView";
 import { NotificationOverView } from "./component/notification/NotificationOverview";
 import { InfomationOverview } from "./component/auth/InformationOverview";
 import { NewsOverview } from "./component/news/NewsOverView";
@@ -21,19 +20,29 @@ import Address from "./component/location/Address";
 import { Page404NotFound } from "./component/home/Page404NotFound";
 import { Setting } from "./component/manager/Setting";
 import { YardDetail } from "./component/yard/YardDetail";
+import { YardList } from "./component/yard/YardList";
+import { Header } from "./component/home/Header";
+import { FollowOverview } from "./component/auth/FollowOverview";
+import { Payment } from "./component/manager/Payment";
 function App() {
   return (
     <>
+
     <Provider store={store}>
+
       <BrowserRouter>
+        <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/san-bong" element={<YardListOverView />} />
+          <Route path="/san-bong" element={<YardList />} />
+          <Route path="/results?query" element={<YardList />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/ho-so" element={<InfomationOverview />} />
+          <Route path="/ho-so/:id" element={<InfomationOverview />} />
+          <Route path="/theo-doi/:id" element={<FollowOverview />} />
           <Route path="/thong-bao" element={<NotificationOverView />} />
           <Route path="/tin-tuc" element={<NewsOverview />} />
           <Route path="/cau-lac-bo" element={<GroupOverview />} />
+          <Route path="/thanh-toan/:id" element={<Payment />} />
           <Route path="/tao-san" element={<CreateYard />} />
           <Route path="/quan-ly" element={<ManagerOverview />} />
           <Route path="/dat-san/:id" element={<CreateBooking />} />

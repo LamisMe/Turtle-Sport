@@ -26,4 +26,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Integer> {
             "group by y.id\n" +
             "having a.username =:name ",nativeQuery = true)
     List<ICustomer> getAllYardCustomer(@Param("name") String name);
+
+    Customer findCustomerByAccount_Username(String username);
 }
